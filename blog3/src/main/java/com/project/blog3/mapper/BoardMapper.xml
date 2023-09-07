@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BoardMapper">
+    <resultMap id="boardResultMap" type="com.example.demo.model.Board">
+        <id column="board_idx" property="boardIdx" />
+        <result column="board_name" property="boardName" />
+        <result column="board_title" property="boardTitle" />
+        <result column="board_content" property="boardContent" />
+        <result column="board_date" property="boardDate" />
+        <result column="board_hit" property="boardHit" />
+    </resultMap>
+
+    <select id="getAllBoards" resultMap="boardResultMap">
+        SELECT * FROM board
+    </select>
+
+    <select id="getBoardById" resultMap="boardResultMap">
+        SELECT * FROM board WHERE board_idx = #{boardIdx}
+    </select>
+
+    <insert id="addBoard" parameterType="com.example.demo.model.Board">
+        INSERT INTO board (board_name, board_title, board_content)
+        VALUES (#{boardName}, #{boardTitle}, #{boardContent})
+    </insert>
+
+    <update id="updateBoard" parameterType="com.example.demo.model.Board">
+        UPDATE board
+        SET board_name = #{boardName}, board_title = #{boardTitle}, board_content = #{boardContent}
+        WHERE board_idx = #{boardIdx}
+    </update>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM board WHERE board_idx = #{boardIdx}
+    </delete>
+</mapper>

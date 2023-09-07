@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>댓글 작성</title>
+</head>
+<body>
+<h1>댓글 작성</h1>
+<form th:action="@{/reply/create}" method="post" th:object="${reply}">
+  <input type="hidden" name="replyBoardIdx" th:value="${boardId}" />
+  <div>
+    <label for="replyName">작성자:</label>
+    <input type="text" id="replyName" name="replyName" th:field="*{replyName}" />
+  </div>
+  <div>
+    <label for="replyContent">내용:</label>
+    <textarea id="replyContent" name="replyContent" th:field="*{replyContent}"></textarea>
+  </div>
+  <div>
+    <button type="submit">작성</button>
+    <a th:href="@{/reply/list/{boardId}(boardId=${boardId})}">취소</a>
+  </div>
+</form>
+</body>
+</html>

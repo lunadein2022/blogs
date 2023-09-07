@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 목록</title>
+</head>
+<body>
+<h1>게시물 목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>제목</th>
+        <th>작성일</th>
+        <th>작업</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${boards}">
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.title}"></td>
+        <td th:text="${board.createdDate}"></td>
+        <td>
+            <a th:href="@{/board/view/{id}(id=${board.id})}">보기</a>
+            <a th:href="@{/board/edit/{id}(id=${board.id})}">수정</a>
+            <a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/board/create}">새 글 작성</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta lang="en">
+    <title>게시물 목록</title>
+</head>
+<body>
+<h1>게시물 목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>제목</th>
+        <th>작성일</th>
+        <th>작업</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${boards}">
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.title}"></td>
+        <td th:text="${board.createdDate}"></td>
+        <td>
+            <a th:href="@{/board/view/{id}(id=${board.id})}">보기</a>
+            <a th:href="@{/board/edit/{id}(id=${board.id})}">수정</a>
+            <a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/board/create}">새 글 작성</a>
+</body>
+</html>

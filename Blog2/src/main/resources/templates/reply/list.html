@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta lang="en">
+    <meta charset="UTF-8">
+    <title>댓글 목록</title>
+</head>
+<body>
+<h1>댓글 목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+        <th>작업</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reply : ${replies}">
+        <td th:text="${reply.replyIdx}"></td>
+        <td th:text="${reply.replyName}"></td>
+        <td th:text="${reply.replyContent}"></td>
+        <td th:text="${reply.replyDate}"></td>
+        <td>
+            <a th:href="@{/reply/edit/{id}(id=${reply.replyIdx})}">수정</a>
+            <a th:href="@{/reply/delete/{id}(id=${reply.replyIdx})}">삭제</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/reply/create/{boardId}(boardId=${boardId})}">새 댓글 작성</a>
+<a th:href="@{/board/list}"> 게시판 으로 돌아 가기</a>
+</body>
+</html>
